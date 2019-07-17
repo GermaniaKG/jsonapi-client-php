@@ -1,0 +1,47 @@
+{
+	"name": "germania-kg/api-client",
+	"description": "HTTP client wrapper for Germania's Web APIs",
+
+	"authors": [
+		{
+			"name": "Carsten Witt",
+			"email": "carstenwitt@germania-kg.de",
+			"role": "Developer"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Germania\\JsonApiClient\\": "src/"
+		}
+	},
+
+	"autoload-dev": {
+		"psr-4": { "tests\\": "tests/src" }
+	},	
+
+    "require": {
+    	"php": "^7.0",
+        "guzzlehttp/guzzle": "^6.3",
+		"psr/log": "^1.1",
+		"germania-kg/jsondecoder": "^1.0",
+		"psr/cache": "^1.0"
+    },
+
+	"require-dev": {
+		"cache/void-adapter": "^1.0",		
+		"friendsofphp/php-cs-fixer": "^2.12",
+		"php-coveralls/php-coveralls": "^2.0",
+		"phpunit/phpunit": "^5.7|^6.0|^7.0"
+	},
+
+  	"scripts": {
+		"phpcs": "php-cs-fixer fix -v --diff --dry-run --allow-risky=yes src/",
+		"phpcs-apply": "php-cs-fixer fix -vv --allow-risky=yes src/",
+ 		"phpunit": "phpunit --coverage-text",
+
+    	"test": [
+        	"@phpcs",
+        	"@phpunit"
+		]
+	}
+}

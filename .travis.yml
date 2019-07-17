@@ -1,0 +1,24 @@
+# .travis.yml
+
+
+language: php
+
+php:
+  - "7.0"
+  - "7.1"
+  - "7.2"
+  - "7.3"  
+
+env:
+
+before_script:
+  - rm composer.lock
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+  - cp phpunit.xml.dist phpunit.xml
+
+script:
+  - composer phpunit
+
+after_script:
+
