@@ -1,6 +1,6 @@
 {
-	"name": "germania-kg/api-client",
-	"description": "HTTP client wrapper for Germania's Web APIs",
+	"name": "germania-kg/jsonapi-client",
+	"description": "Convenience wrapper for simple retrievals from Germania's JSON APIs with Cache support",
 
 	"authors": [
 		{

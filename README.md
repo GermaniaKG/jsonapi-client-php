@@ -185,6 +185,16 @@ When there's a problem building the result array, or writing to the cache, a **J
 
 
 
+## Development and Unit tests	
+
+```bash
+$ git clone https://github.com/GermaniaKG/jsonapi-client-php.git
+$ cd jsonapi-client-php
+$ composer install
+```
+
+
+
 ## Unit tests
 
 Copy `phpunit.xml.dist` to `phpunit.xml` and adapt the **API_BASE_URL** and **AUTH_TOKEN** environment variables. Then run [PhpUnit](https://phpunit.de/) like this:
