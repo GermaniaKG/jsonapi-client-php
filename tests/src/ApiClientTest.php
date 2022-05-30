@@ -9,18 +9,20 @@ use Germania\JsonApiClient\JsonApiClientResultsException;
 use Germania\JsonApiClient\JsonApiClientCacheException;
 use GuzzleHttp\Client;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Response;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\CacheItemInterface;
 use Psr\Http\Message\ResponseInterface;
 
+
 use Cache\Adapter\Void\VoidCachePool;
 
 
 class ApiClientTest extends \PHPUnit\Framework\TestCase
 {
-
+    use ProphecyTrait;
 
 	public function testExceptionInAskCachePhase( )
 	{
@@ -263,7 +265,9 @@ class ApiClientTest extends \PHPUnit\Framework\TestCase
 	protected function createCacheItem( bool $is_hit, bool $do_not_reveal = false )
 	{
 		$cache_item = $this->prophesize(CacheItemInterface::class);
-		$cache_item->isHit()->willReturn( $is_hit );
+		$cache_item->set(Argument::any())->willReturn();
+        $cache_item->expiresAfter(Argument::any())->willReturn();
+        $cache_item->isHit()->willReturn( $is_hit );
 
 		return ($do_not_reveal) ? $cache_item : $cache_item->reveal();
 	}
